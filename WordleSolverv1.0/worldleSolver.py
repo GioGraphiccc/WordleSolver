@@ -5,8 +5,6 @@ from colorama import Fore
 
 def CreateList():
     wordList = []
-    x = 0 #used for while loop
-    word = ""
     with open("wordList.txt", "r") as fileObject: #open file
         for line in fileObject:     #loop through file line by line. one line contains the word plus a useless newline char at the end 
             wordList.append(removeNewline(line)) #insert word into wordList
@@ -37,6 +35,7 @@ def contains(word, letter):
         if(letter in word[x]):
             return 1
     return 0
+
 def containsPosition(word, letter, pos):
     if(word[pos] == letter):
         return 1
@@ -58,6 +57,7 @@ def NarrowGreen(letters, wordList): #returns a list with the words that contain 
                     newList.append(wordList[x])
             wordList = newList.copy()
     return newList
+
 #returns a list of all the words that dont contain certain letters
 def NarrowGray(letters, wordList):
     tempList = []
@@ -93,7 +93,7 @@ def NarrowYellow(letters, wordList):
     wordList = tempList.copy()
     return wordList
                     
-
+#MAIN
 wordList = CreateList()
 proceed = 1
 tempList = []
@@ -131,5 +131,5 @@ while(proceed == 1):
     print("My calculations indicate to use the word \"" + randomWord + "\"")
     wordList.remove(randomWord)
 
-
+#END OF MAIN
 
