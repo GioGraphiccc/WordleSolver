@@ -97,6 +97,7 @@ def NarrowYellow(letters, wordList):
 wordList = CreateList()
 proceed = 1
 tempList = []
+temp = ""
 print("Hello and welcome to Worlde Solver v1.0!")
 print("This solver will most likely solve the word in 4-5 tries.")
 print("---------------------------------------\n")
@@ -111,10 +112,13 @@ while(proceed == 1):
         templist = NarrowGreen(greenletters, wordList).copy()
         wordList = templist.copy()
         tempList.clear()
-    else:
-        print("sucks")
+
     grayLetters = input("If there are any GRAY letters type them in all together(Ex. abc). \nIf there are none type none\n-")
     if(grayLetters != "none"):
+        for x in range(len(grayLetters)): #loop through the grayletters to see if any letters is already contained in greenletters 
+            if(contains(greenletters, grayLetters[x]) == 0):
+                temp = "".join((temp,grayLetters[x]))
+        grayLetters = temp
         tempList = NarrowGray( grayLetters, wordList).copy()
         wordList = tempList.copy()
         tempList.clear()
